@@ -5,7 +5,7 @@
       <%= number_with_precision(@restaurant.average_satisfaction(@restaurant), precision: 1) %></h4><br />
     電話番号 : <%= @restaurant.tel %><br />
     住所 : <%= @restaurant.address %><br />
-    ホームページ : <%= @restaurant.web_url %><br />
+    ホームページ : <a href="<%= @restaurant.web_url %>"><%= @restaurant.web_url %></a><br />
     <div class="ggmap"><iframe src="http://maps.google.co.jp/maps?q=<%= @restaurant.address %>&z=14&output=embed" height="350" width="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
   </div>
 </div>

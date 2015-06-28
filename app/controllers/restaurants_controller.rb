@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page])
     if current_user.name.include?("kodama")||current_user.name.include?("Kodama")||current_user.name.include?("KODAMA")||current_user.name.include?("小玉")||current_user.name.include?("こだま")||current_user.name.include?("コダマ")||current_user.gender == false
       @picture = "/assets/female2.jpg"
       @class = "img1"
