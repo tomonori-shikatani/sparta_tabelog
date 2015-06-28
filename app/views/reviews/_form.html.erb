@@ -1,0 +1,13 @@
+<%= form_for [@restaurant, @review] do |f| %>
+<div class="form-group">
+  <%= f.label :body, "レビュー" %>
+  <%= f.text_area :body, class: "form-control" %>
+<div>
+
+<div class="form-group">
+  <%= f.label :satisfaction, "満足度" %>
+  <%= f.number_field :satisfaction, class: "form-control" %>
+<div>
+
+  <%= f.submit '投稿', class: "btn btn-default" %>
+<% end %>

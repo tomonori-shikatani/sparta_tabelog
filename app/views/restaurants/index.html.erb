@@ -1,0 +1,29 @@
+<div class= "sidebar float-right">
+     <img src="<%= @picture %>", class="<%= @class %>">
+</div>
+    <% @restaurants.each do |restaurant| %>
+    <div class=" col-md-7 restaurants-index float-left">
+      <h4><%= link_to restaurant.name, restaurant_url(restaurant) %></h4><br />
+      <h4><%= restaurant.average_satisfaction_star(restaurant) %>
+      <%= number_with_precision(restaurant.average_satisfaction(restaurant), precision: 1) %></h4><br />
+      <% restaurant.reviews.each_with_index do |review, index| %>
+      <%
+        if index >= 1
+          break
+        end
+        %>
+      <%= truncate(review.body, length:200) %>
+      <%= link_to '続きはこちら', restaurant_path(restaurant) %><br />
+      <% end %>
+      電話番号 : <%= restaurant.tel %><br />
+      住所 : <%= restaurant.address %><br />
+      ホームページ : <%= restaurant.web_url %><br />
+    </div>
+    <% end %>
+
+<div class=" col-md-7 restaurants-index float-left">
+  <div class="center">
+    <%= link_to '口コミを投稿する', new_restaurant_path, class: "btn btn-default" %>
+  </div>
+</div>
+

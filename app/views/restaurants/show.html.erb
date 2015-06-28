@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h3><%= @restaurant.name %></h3><br />
+    <h4><%= @restaurant.average_satisfaction_star(@restaurant) %>
+      <%= number_with_precision(@restaurant.average_satisfaction(@restaurant), precision: 1) %></h4><br />
+    電話番号 : <%= @restaurant.tel %><br />
+    住所 : <%= @restaurant.address %><br />
+    ホームページ : <%= @restaurant.web_url %><br />
+    <div class="ggmap"><iframe src="http://maps.google.co.jp/maps?q=<%= @restaurant.address %>&z=14&output=embed" height="350" width="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-lg-12">
+    <%= link_to "このお店のレビューを書く", new_restaurant_review_path(@restaurant), class: "btn btn-default" %>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-lg-12">
+    <h2>レビュー一覧</h2>
+      <hr>
+    <% @restaurant.reviews.each do |review| %>
+      <%= review.satisfaction_star(review.satisfaction) %>  <%= number_with_precision(review.satisfaction, precision: 1) %><br />
+      <%= simple_format(review.body) %><br />
+      <%= review.user.name %> |
+      <%= review.created_at.strftime("%Y年%m月%d日") %><br />
+      <% if current_user.id == review.user_id %>
+      <%= link_to '編集', edit_restaurant_review_path(@restaurant, review) %> |
+       <a href="#" data-toggle="modal" data-target="#delete-review">削除</a><br />
+               <!-- モーダル -->
+        <div class="modal fade" id="delete-review">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">レビューの削除</h4>
+              </div>
+              <div class="modal-body">
+                <p>このレビューを削除しますか？</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <%= link_to '削除する',restaurant_review_path(@restaurant, review),method: :delete, class: "btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+    <% end %>
+  </div>
+</div>
+
+
