@@ -1,5 +1,5 @@
 <div class= "sidebar float-right">
-     <img src="<%= @picture %>", class="<%= @class %>">
+     <img src="<%= asset_path @picture %>", class="<%= @class %>">
 </div>
     <% @restaurants.each do |restaurant| %>
     <div class=" col-md-7 restaurants-index float-left">
