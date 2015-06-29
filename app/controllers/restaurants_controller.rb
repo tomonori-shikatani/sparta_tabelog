@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
       @picture = "female2.jpg"
       @class = "img1"
     else
-       @picture = "hooters"+ rand(3).to_s + ".jpg"
+       @picture = "hooters1.jpg"
        @class= "img2"
     end
   end
