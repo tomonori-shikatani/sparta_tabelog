@@ -4,10 +4,10 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.page(params[:page])
     if current_user.name.include?("kodama")||current_user.name.include?("Kodama")||current_user.name.include?("KODAMA")||current_user.name.include?("小玉")||current_user.name.include?("こだま")||current_user.name.include?("コダマ")||current_user.gender == false
-      @picture = "female2.jpg"
+ #     @picture = "female2.jpg"
       @class = "img1"
     else
-       @picture = "hooters1.jpg"
+#       @picture = "hooters1.jpg"
        @class= "img2"
     end
   end
