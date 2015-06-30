@@ -206,6 +206,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  execjs
   guard-livereload
   jbuilder (~> 2.0)
   jquery-rails
