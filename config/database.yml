@@ -26,5 +26,5 @@ production:
   database: tabelog
   port: 3306
   username: shikatani
-  password: T0m0n0r1
+  password: spartashikatani
   host: localhost
